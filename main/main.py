@@ -1,10 +1,9 @@
 import os
 import warnings
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
-warnings.simplefilter(action='ignore', category=UserWarning)
 
 import dgl
 import numpy as np
@@ -14,7 +13,6 @@ from Datasets.FlickrDataset import FlickrMIRDataset
 from Models.GCN import GCN
 from Trainer.Trainer import Trainer
 import torch
-import sys
 
 
 
@@ -22,16 +20,16 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 num_channel = 128
 learning_rate = 0.001
-epochs = 20000
-patience = 100
+epochs = 2000
+patience = 200
 num_run = 5
 num_feat = 2048
 num_class = 1
-epsilon_feat = sys.argv[1]
+epsilon_feat = '2.0'
 
 data_file = 'Data/MIR/feat/'
 data_edge_file = 'Data/MIR/pairs/'
-save_model_path = '18JAN2022/'
+save_model_path = '24NOV2021/'
 org_edge_file = 'mir_priv.pairs'
 # edge_file = 'mir_priv.pairs'
 feat_file = [
@@ -45,7 +43,7 @@ feat_file = [
     'perturbed_feat_eps_{}_gamma_0.8.npy'.format(epsilon_feat),
     'perturbed_feat_eps_{}_gamma_0.9.npy'.format(epsilon_feat),
 ]
-gamma = ['0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9']
+gamma = [0.1*x for x in range(1,10)]
 
 all_result = {}
 avg_result = {}

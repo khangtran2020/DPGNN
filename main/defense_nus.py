@@ -1,7 +1,7 @@
 import os
 import warnings
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -43,3 +43,4 @@ print("=============== START TRAINING: ===================")
 auc, f1, acc = trainer.train()
 print("================= ALL RESULTS: ====================")
 print("Result:\n* AUC = {}\n* F1-score={}\n* Acc = {}".format(auc, f1, acc))
+

@@ -1,7 +1,7 @@
 import os
 import warnings
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -23,8 +23,8 @@ num_channel = 128
 learning_rate = 0.001
 epochs = 20000
 patience = 50
-num_run = 5
-num_feat = 2048
+num_run = 3
+num_feat = 50
 epsilon = sys.argv[1]
 data_path = 'Data/PPI/feats/'
 
@@ -74,7 +74,7 @@ for i in range(len(dataset_test)):
     feat_matrix = np.load(data_path+test_feat[i]).astype(np.float32)
     dataset_test[i].ndata['feat'] = torch.from_numpy(feat_matrix)
 num_class = dataset_train.num_labels
-save_model_path = '30DEC2021/'
+save_model_path = '07JAN2022/'
 
 all_result = {}
 avg_result = {}
@@ -102,3 +102,4 @@ for key in all_result:
 print("=============== AVG RESULTS: ===================")
 for key in avg_result:
     print(key, avg_result[key])
+

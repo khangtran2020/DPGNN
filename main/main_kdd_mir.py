@@ -34,19 +34,19 @@ org_edge_file = 'mir_priv.pairs'
 feat_file = 'resnet50_plain_feat.npy'
 
 edge_file = [
-    'mir_kdd_0.1.eps',
-    'mir_kdd_0.2.eps',
-    'mir_kdd_0.4.eps',
-    'mir_kdd_0.6.eps',
-    'mir_kdd_0.8.eps',
-    'mir_kdd_1.0.eps',
+    'mir_kdd_0.1.pairs',
+    'mir_kdd_0.2.pairs',
+    'mir_kdd_0.4.pairs',
+    'mir_kdd_0.6.pairs',
+    'mir_kdd_0.8.pairs',
+    'mir_kdd_1.0.pairs',
 ]
 eps_edge = ['0.1', '0.2', '0.4', '0.6', '0.8', '1.0']
 
 all_result = {}
 avg_result = {}
 i = 0
-for efile in tqdm(feat_file):
+for efile in tqdm(edge_file):
     print("Running for feat file: {}".format(efile))
     dataset = FlickrMIRDataset(feat_file=data_file + feat_file, edge_org = data_edge_file + org_edge_file, edge_generated = data_edge_file + efile, type_test = 'edge_base')
     temp_auc = []
@@ -74,3 +74,4 @@ for key in all_result:
 print("=============== AVG RESULTS: ===================")
 for key in avg_result:
     print(key, avg_result[key])
+

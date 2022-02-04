@@ -59,3 +59,4 @@ for key in all_result:
 print("=============== AVG RESULTS: ===================")
 for key in avg_result:
     print(key, avg_result[key])
+

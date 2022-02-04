@@ -1,7 +1,7 @@
 import os
 import warnings
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -75,7 +75,7 @@ for i in range(len(dataset_test)):
     feat_matrix = np.load(data_path+test_feat[i]).astype(np.float32)
     dataset_test[i].ndata['feat'] = torch.from_numpy(feat_matrix)
 num_class = dataset_train.num_labels
-save_model_path = '30DEC2021/'
+save_model_path = '14JAN2022/'
 
 all_result = {}
 avg_result = {}
@@ -103,3 +103,4 @@ for key in all_result:
 print("=============== AVG RESULTS: ===================")
 for key in avg_result:
     print(key, avg_result[key])
+

@@ -25,7 +25,7 @@ patience = 50
 num_feat = 2048
 num_batch = 47
 data_file = 'Data/REDDIT/'
-save_model_path = '03JAN2022/'
+save_model_path = '20JAN2022/'
 mechanism = sys.argv[1]
 epsilon_feat = sys.argv[2]
 print(mechanism)
@@ -69,4 +69,5 @@ for key in all_result:
 print("=============== AVG RESULTS: ===================")
 for key in avg_result:
     print(key, avg_result[key])
+
 

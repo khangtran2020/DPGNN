@@ -1,7 +1,7 @@
 import os
 import warnings
 os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"] = "4"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 os.environ["CUDA_LAUNCH_BLOCKING"] = "1"
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 warnings.filterwarnings("ignore", category=UserWarning)
@@ -21,9 +21,9 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print(device)
 num_channel = 128
 learning_rate = 0.001
-epochs = 20000
+epochs = 15000
 patience = 50
-num_run = 5
+num_run = 3
 num_feat = 2048
 private_edge_rate = sys.argv[1]
 epsilon_feat = sys.argv[3]
@@ -34,7 +34,7 @@ dataset_train = PPIDataset(eps_feat=epsilon_feat, eps_edge=epsilon_edge, mode='t
 dataset_val = PPIDataset(eps_feat=epsilon_feat, eps_edge=epsilon_edge, mode='valid', p_rate=private_edge_rate, exp_mode='featedge')
 dataset_test = PPIDataset(eps_feat=epsilon_feat, eps_edge=epsilon_edge, mode='test', p_rate=private_edge_rate, exp_mode='featedge')
 num_class = dataset_train.num_labels
-save_model_path = '03JAN2022/'
+save_model_path = '14JAN2022/'
 
 all_result = {}
 avg_result = {}
