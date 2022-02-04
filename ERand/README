@@ -8,12 +8,11 @@ This program is freely distributed in the hope that it will be useful, but WITHO
 If you have any questions upon this program, please contact XIAO Qian (xiaoqiannus@gmail.com).
 
 ****************************************************************************************************
-Author       : XIAO Qian  ( xiaoqiannus@gmail.com )
-Collaborators: CHEN Rui and TAN Kian-Lee
-Project      : Differentially Private Network Structural Inference
-Location     : National University of Singapore
-Created      : 14 Feb 2014
-Modified     : 9 Oct 2014    (cleaned up for public consumption)
+Author       : Khang Tran ( kt36@njit.edu )
+Collaborators: Hai Phan
+Project      : PPGNN: Privacy Preserving for Graph Neural Networks
+Location     : NJIT
+Created      : 4 Feb 2022
 ****************************************************************************************************
 This program runs the MCMC with HRG model and the input graph G under calibrated distribution
 ****************************************************************************************************
@@ -25,22 +24,19 @@ This program runs the MCMC with HRG model and the input graph G under calibrated
   -f <file>       Input .pairs graph file
   -epsilonHRG <real number>    Input privacy budget for HRG
   -epsilonE <real number>  Input privacy budget for edge perturbation
-  -make <file>    Build random graph from <dataname>_<tag>-dendro.hrg dendrogram file
   -eq <integer>		threshold for manually forcing MCMC stop after eq*n steps and reaching convergence
   -stop <integer>   threshold for manually stop MCMC stop after stop*n
+  -pub_round <integer> number of public round
+  -priv_round <integer> number of private round
 For example
-  ./privHRG -f data/karate.pairs
-  ./privHRG -f data/karate.pairs -epsilonHRG 0.5 -epsilonE 0.5
-  ./privHRG -f data/karate.pairs -epsilonHRG 0.5 -epsilonE 0.5 -eq 3000 -stop 4000
-  ./privHRG -make karate_sample-dendrogram.hrg -epsilonE 0.5
+  ./privHRG -f data/mir_priv.pairs
+  ./privHRG -f data/mir_priv.pairs -epsilonHRG 0.5 -epsilonE 0.5 -pub_round 1000 -priv_round 10
 
 
 *** IMPORTANT USAGE NOTES ****************************************************************************
 1. All programs are tested on Unix/Linux systems;
 2. All datasets are put inside the folder ./data;
-3. All hrg input file must follow the name format <dataname>_<tag>-dendro.hrg, e.g. karate_sample-dendrogram.hrg. We use <dataname> to recognize the original dataset in the ./data folder. The program will crash if the name format is not correct;
-4. All output random graphs will be put inside the folder ./output/<timestamp>;
-5. The input graph file to the algorithm must be a text file containing an edge list for the graph in question; 
+3. The input graph file to the algorithm must be a text file containing an edge list for the graph in question; 
 nodes are indexed by integers only, indices are separated by a tab, and edges are terminated by a 
 carriage return. 
 For instance, here is a pair of triangles linked by a single edge:
