@@ -41,6 +41,7 @@ def add_dp_group(group):
     group.add_argument('--eps_ldp', type=float, default=1.0, help="privacy budget for LDP")
     group.add_argument('--num_bit', type=int, default=10, help="number of bit to use")
     group.add_argument('--exponent_bit', type=int, default=10, help="number of bit to use for the integer part")
+    group.add_argument('--use_sign_bit', type=bool, default=True, help="using sign bit or not")
 
 
 def parse_args():

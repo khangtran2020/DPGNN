@@ -40,6 +40,17 @@ def binary_to_float(bstr, m, n):
         res = -1 * res
     return res
 
+def string_to_int(a):
+    bit_str = "".join(x for x in a)
+    return np.array(list(bit_str)).astype(int)
+
+def join_string(a, num_bit, num_feat):
+    res = []
+    for i in range(num_feat):
+        res.append("".join(str(x) for x in a[i*num_bit:(i+1)*num_bit]))
+    return np.array(res)
+
+
 def list_edge_from_adj(adj_matrix):
     new_adj = np.array(adj_matrix > 0).astype(int)
     new_adj = new_adj - np.identity(new_adj.shape[0])
